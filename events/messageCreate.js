@@ -9,18 +9,19 @@ module.exports = {
 
         //No lo cuestiones, sólo gózalo (Quien sabe como jala, pero jala)
         const wordInString = (s, word) => {
-            const test1 = new RegExp('\\s*\\b(?=\\w*' + word + '(\\w)\\1)\\w+\\b', 'i').test(s)
+            const test1 = new RegExp('\\b' + arr[0] +'{1,16}' + arr[1] +'{1,16}' + arr[2] +'{1,16}' +'\\b', 'i').test(s)
             const test2 = new RegExp('\\b' + word + '\\b', 'i').test(s);
             return (test1 || test2) ? true : false;
         };
         const texto = message.content
+        const arr = aberracion.split('')
 
         if (wordInString(texto, aberracion)){
             message.delete()
                 .then(msg => console.log(`Deleted message from ${msg.author.username}`))
                 .catch(console.error);
 
-            var censura = texto.replaceAll(new RegExp('\\s*\\b(?=\\w*' + aberracion + '(\\w)\\1)\\w+\\b', 'gi'),'n*a');
+            var censura = texto.replaceAll(new RegExp('\\b' + arr[0] +'{1,16}' + arr[1] +'{1,16}' + arr[2] +'{1,16}' +'\\b', 'gi'),'n*a');
             censura = censura.replaceAll(new RegExp('\\b' + aberracion + '\\b', 'gi'), 'n*a');
 
             const embed = new MessageEmbed()
