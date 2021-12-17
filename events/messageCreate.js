@@ -29,7 +29,6 @@ module.exports = {
 
             const embed = new MessageEmbed()
                 .setColor("000000")
-                .setTitle("¡Amenaza Neutralizada!")
                 .setDescription(`${message.author} dijo: ||${censura}||`);
 
             message.channel.send({embeds: [embed]})
