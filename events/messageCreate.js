@@ -9,7 +9,7 @@ module.exports = {
 
         //No lo cuestiones, sólo gózalo (Quien sabe como jala, pero jala)
         const wordInString = (s, word) => {
-            const test1 = new RegExp('\\b' + arr[0] +'{1,16}' + arr[1] +'{1,16}' + arr[2] +'{1,16}' +'\\b', 'i').test(s)
+            const test1 = new RegExp('\\b' + arr[0] +'{1,16}' + arr[1] +'{1,16}' + arr[2] +'{1,16}' + arr[0] +'{0,16}'+'\\b', 'i').test(s)
             const test2 = new RegExp('\\b' + word + '\\b', 'i').test(s);
             return (test1 || test2) ? true : false;
         };
