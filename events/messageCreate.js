@@ -1,5 +1,4 @@
 const { MessageEmbed} = require('discord.js');
-const { aberracion } = require('../config.json')
 
 module.exports = {
     name: 'messageCreate',
@@ -7,22 +6,26 @@ module.exports = {
     execute(message) {
         if (message.author.bot) return;
 
+        const regNYA = new RegExp('\\b[n]{1,16}[y]{1,16}[a]{1,16}[n]{0,16}\\b', 'gi');
+        const regOWVU= new RegExp('\\b[tou7]{1,16}[uvw]{1,16}[tou7]{1,16}\\b', 'gi');
+
         //No lo cuestiones, sólo gózalo (Quien sabe como jala, pero jala)
-        const wordInString = (s, word) => {
-            const test1 = new RegExp('\\b' + arr[0] +'{1,16}' + arr[1] +'{1,16}' + arr[2] +'{1,16}' + arr[0] +'{0,16}'+'\\b', 'i').test(s)
-            const test2 = new RegExp('\\b' + word + '\\b', 'i').test(s);
+        const aberracionEnStr = (str) => {
+            const test1 = regNYA.test(str)
+            const test2 = regOWVU.test(str)
             return (test1 || test2) ? true : false;
         };
-        const texto = message.content
-        const arr = aberracion.split('')
+        var texto = message.content
+        //Remueve diacriticos
+        texto = texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 
-        if (wordInString(texto, aberracion)){
+        if (aberracionEnStr(texto)){
             message.delete()
                 .then(msg => console.log(`Deleted message from ${msg.author.username}`))
                 .catch(console.error);
 
-            var censura = texto.replaceAll(new RegExp('\\b' + arr[0] +'{1,16}' + arr[1] +'{1,16}' + arr[2] +'{1,16}' + arr[0] +'{0,16}'+'\\b', 'gi'),'n*a');
-            censura = censura.replaceAll(new RegExp('\\b' + aberracion + '\\b', 'gi'), 'n*a');
+            var censura = texto.replaceAll(regNYA,'n*a');
+            censura = censura.replaceAll(regOWVU, 'uw*');
 
             const embed = new MessageEmbed()
                 .setColor("000000")
