@@ -6,8 +6,8 @@ module.exports = {
     execute(message) {
         if (message.author.bot) return;
 
-        const regNYA = new RegExp('\\b[n]{1,16}[y]{1,16}[a]{1,16}[n]{0,16}\\b', 'gi');
-        const regOWVU= new RegExp('\\b[tou7]{1,16}[uvw]{1,16}[tou7]{1,16}\\b', 'gi');
+        const regNYA = new RegExp('\\b[n]{1,16}[ -_]*[y]{1,16}[ -_]*[a]{1,16}[ -_]*[n]{0,16}\\b', 'gi');
+        const regOWVU= new RegExp('\\b[tou7]{1,16}[ -_]*[uvw]{1,16}[ -_]*[tou7]{1,16}\\b', 'gi');
 
         //No lo cuestiones, sólo gózalo (Quien sabe como jala, pero jala)
         const aberracionEnStr = (str) => {
