@@ -21,7 +21,7 @@ module.exports = {
                 .then(msg => console.log(`Deleted message from ${msg.author.username}`))
                 .catch(console.error);
 
-            var censura = texto.replaceAll(new RegExp('\\b' + arr[0] +'{1,16}' + arr[1] +'{1,16}' + arr[2] +'{1,16}' +'\\b', 'gi'),'n*a');
+            var censura = texto.replaceAll(new RegExp('\\b' + arr[0] +'{1,16}' + arr[1] +'{1,16}' + arr[2] +'{1,16}' + arr[0] +'{0,16}'+'\\b', 'gi'),'n*a');
             censura = censura.replaceAll(new RegExp('\\b' + aberracion + '\\b', 'gi'), 'n*a');
 
             const embed = new MessageEmbed()
