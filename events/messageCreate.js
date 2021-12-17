@@ -16,7 +16,7 @@ module.exports = {
             return (test1 || test2) ? true : false;
         };
         var texto = message.content
-        //Remueve diacriticos
+        //Remueve diacríticos
         texto = texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 
         if (aberracionEnStr(texto)){
