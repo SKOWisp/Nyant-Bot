@@ -6,7 +6,7 @@ module.exports = {
     execute(message) {
         if (message.author.bot) return;
 
-        const regNYA = /\bn+[y\p{P}]+?a+[nrsz]*?\b/giu
+        const regNYA = /\bn+[yi\p{P}]+?a+[nrsz]*?\b/giu
         const regOWVU= /\b[tou07]+[vw\p{P}]+?[tou07]+[nrsz]*\b/giu
 
         //No lo cuestiones, sólo gózalo (Quien sabe como jala, pero jala)
