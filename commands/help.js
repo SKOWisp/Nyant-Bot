@@ -9,7 +9,9 @@ module.exports = {
 
         const descripcion = '/help - Muestra los comandos del bot\n \
         /ping - Muestra la salud del bot\n \
-        /kick - No sólo censura el n*a, sino que también expulsa al usuario que puso tal abominación. (Sólo moderadores, WIP)'
+        ADMINS\n \
+        /nya - Activa/Desactiva la censura de nya\n \
+        /uwu - Activa/Desactiva la censura de uwu\n'
         
         const embed = new MessageEmbed()
             .setColor("000000")
@@ -18,6 +20,6 @@ module.exports = {
             .setImage('https://i.imgur.com/0MkKjea.png')
             .setFooter('Errores: Wisp#4537','https://i.imgur.com/w0hMzhR.png');
 
-		interaction.reply({embeds: [embed], ethereal: true});
+		interaction.reply({embeds: [embed], ephemeral: true});
 	},
 };

@@ -29,5 +29,11 @@ for (const file of eventFiles) {
 	}
 }
 
+var my_SETTINGS = new Map();
+
 // Login to Discord with client's token.
 client.login(process.env.BOT_TOKEN);
+
+module.exports = {
+	SETTINGS: my_SETTINGS
+}
