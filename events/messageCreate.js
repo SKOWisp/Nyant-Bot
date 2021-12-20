@@ -20,25 +20,23 @@ module.exports = {
         texto = texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
 
         //No lo cuestiones, sólo gózalo (Quien sabe como jala, pero jala)
-        const regNYA = /\bn+[yi\p{P}]+?a+[nrsz]*?\b/giu
-        const regOWVU= /\b[tou07]+[vw\p{P}]+?[tou07]+[nrsz]*\b/giu
-        
-        
+        const regNYA = /\bn+[yi\p{P}]+?[a4]+[nrsz]*?\b/giu
+        const regOWVU= /\b[ou0]+[vw\p{P}]+?[ou0]+[nrsz]*?\b/giu
+  
+        const test1 = regNYA.test(texto) && serverSETTINGS.nya;
+        const test2 = regOWVU.test(texto) && serverSETTINGS.uwu;
 
-        const test1 = (serverSETTINGS.nya) ? regNYA.test(texto) : false;
-        const test2 = (serverSETTINGS.uwu) ? regOWVU.test(texto) : false;
+        if (test1) texto = texto.replaceAll(regNYA, 'n*a');
+        if (test2) texto = texto.replaceAll(regOWVU, 'uw*');
 
         if (test1 || test2){
-            let censura= texto.replaceAll(regOWVU, 'uw*');
-            censura = censura.replaceAll(regNYA, 'n*a');
-            
             message.delete()
                 .then(msg => console.log(`Deleted message from ${msg.author.username}`))
                 .catch(console.error);
                 
             const embed = new MessageEmbed()
                 .setColor("000000")
-                .setDescription(`${message.author} dijo: ||${censura}||`);
+                .setDescription(`${message.author} dijo: ||${texto}||`);
 
             message.channel.send({embeds: [embed]})
         }
