@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node nyant.js",
-    "refresh": "node deploy-commands.js"
+    "refreshg": "node deploy-commands.js g",
+	"refreshl": "node deploy-commands.js l"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +18,8 @@
     "discord-api-types": "^0.25.2",
     "discord.js": "^13.1.0",
     "dotenv": "^10.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0"
   }
 }
