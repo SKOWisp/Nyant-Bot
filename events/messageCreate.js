@@ -20,7 +20,8 @@ module.exports = {
 		texto = texto.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
 		// No lo cuestiones, sólo gózalo (Quien sabe como jala, pero jala)
-		const regNYA = /\bn+[ \p{P}]*[yi]+?[ \p{P}]*[a4]+[yia4nrsz]*?\b/giu;
+
+		const regNYA = /(?<=[\s\W_])[n\u039D]+[ \p{P}]*[yi]+?[ \p{P}]*[a4]+[yia4n\u039Drsz]*?(?=[\s\W_])/giu;
 		const regOWVU = /\b[ou0]+[ \p{P}]*[vw]+[ \p{P}]*[ou0]+[ou0vwnrsz]*?\b/giu;
 
 		const test1 = regNYA.test(texto) && serverSETTINGS.nya;
