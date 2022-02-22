@@ -21,7 +21,7 @@ module.exports = {
 
 		// No lo cuestiones, sólo gózalo (Quien sabe como jala, pero jala)
 
-		const regNYA = /\bn+[ \p{P}]*[yi]+?[ \p{P}]*[a4]+[yia4nrsz]*?\b/giu;
+		const regNYA = /(?<![\w\u039D])(?=[\w\u039D])[n\u039D]+[ \p{P}]*[yi]+?[ \p{P}]*[a4]+[yia4n\u039Drsz]*?(?<=[\w\u039D])(?![\w\u039D])/giu;
 		const regOWVU = /\b[ou0]+[ \p{P}]*[vw]+[ \p{P}]*[ou0]+[ou0vwnrsz]*?\b/giu;
 
 		const test1 = regNYA.test(texto) && serverSETTINGS.nya;
